@@ -48,7 +48,6 @@ import de.mprengemann.intellij.plugin.androidicons.widgets.FileBrowserField;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.filefilter.TrueFileFilter;
-import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -68,14 +67,16 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class AndroidMultiDrawableImporter extends DialogWrapper implements MultiImporterObserver {
 
     private final FileChooserDescriptor archiveDescriptor = new FileChooserDescriptor(true,
-                                                                                      false,
-                                                                                      true,
-                                                                                      true,
-                                                                                      false,
-                                                                                      false) {
+            false,
+            true,
+            true,
+            false,
+            false) {
         @Override
         public boolean isFileVisible(VirtualFile file, boolean showHiddenFiles) {
             return file.isDirectory() || isZip(file.getName());
@@ -91,13 +92,13 @@ public class AndroidMultiDrawableImporter extends DialogWrapper implements Multi
         }
     };
     private static final Resolution[] RESOLUTIONS = new Resolution[]{
-        Resolution.XXXHDPI,
-        Resolution.XXHDPI,
-        Resolution.XHDPI,
-        Resolution.HDPI,
-        Resolution.MDPI,
-        Resolution.LDPI,
-        Resolution.TVDPI
+            Resolution.XXXHDPI,
+            Resolution.XXHDPI,
+            Resolution.XHDPI,
+            Resolution.HDPI,
+            Resolution.MDPI,
+            Resolution.LDPI,
+            Resolution.TVDPI
     };
     private static final String TAG = AndroidMultiDrawableImporter.class.getSimpleName();
     private static final Logger LOGGER = Logger.getInstance(TAG);
@@ -328,13 +329,13 @@ public class AndroidMultiDrawableImporter extends DialogWrapper implements Multi
                         final String fileRoot = file.getParent().toUpperCase();
                         final String name = FilenameUtils.getBaseName(file.toString());
                         if (name.startsWith(".") ||
-                            fileRoot.contains("__MACOSX")) {
+                                fileRoot.contains("__MACOSX")) {
                             continue;
                         }
                         for (Resolution resolution : RESOLUTIONS) {
                             if (name.toUpperCase().contains("-" + resolution) ||
-                                name.toUpperCase().contains("_" + resolution) ||
-                                fileRoot.contains(resolution.toString())) {
+                                    name.toUpperCase().contains("_" + resolution) ||
+                                    fileRoot.contains(resolution.toString())) {
                                 controller.addZipImage(file, resolution);
                                 break;
                             }
@@ -363,16 +364,16 @@ public class AndroidMultiDrawableImporter extends DialogWrapper implements Multi
                                 FileUtils.deleteQuietly(tempDir);
                                 return;
                             }
-                            final String[] options = new String[] {"Import", "Cancel"};
+                            final String[] options = new String[]{"Import", "Cancel"};
                             final String description = String.format("Import %d assets for %s to %s.",
-                                                                     finalFoundAssets,
-                                                                     StringUtils.join(foundResolutions, ", "),
-                                                                     controller.getTargetRoot());
+                                    finalFoundAssets,
+                                    StringUtils.join(foundResolutions, ", "),
+                                    controller.getTargetRoot());
                             final int selection = Messages.showDialog(description,
-                                                                      title,
-                                                                      options,
-                                                                      0,
-                                                                      Messages.getQuestionIcon());
+                                    title,
+                                    options,
+                                    0,
+                                    Messages.getQuestionIcon());
                             if (selection == 0) {
                                 controller.getZipTask(project, tempDir).queue();
                                 close(0);

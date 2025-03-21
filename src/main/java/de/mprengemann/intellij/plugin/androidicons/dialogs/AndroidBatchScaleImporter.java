@@ -17,7 +17,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PathMacroManager;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
-import com.intellij.openapi.fileChooser.ex.FileDrop;
+import de.mprengemann.intellij.plugin.androidicons.util.FileDrop;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.progress.ProgressIndicator;
@@ -227,7 +227,7 @@ public class AndroidBatchScaleImporter extends DialogWrapper implements BatchSca
     private void initTable() {
         tableModel = new ImageTableModel(controller);
         table.setModel(tableModel);
-        
+
         initRenderers();
         initRowSelection();
         initColumnSizes();
