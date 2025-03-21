@@ -18,6 +18,7 @@ import de.mprengemann.intellij.plugin.androidicons.util.AndroidFacetUtils;
 import de.mprengemann.intellij.plugin.androidicons.util.TextUtils;
 import org.intellij.images.fileTypes.ImageFileTypeManager;
 import org.jetbrains.android.facet.AndroidFacet;
+import org.jetbrains.android.facet.ResourceFolderManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -29,11 +30,11 @@ public class FileBrowserField extends TextFieldWithBrowseButton {
     public static final FileChooserDescriptor RESOURCE_DIR_CHOOSER = FileChooserDescriptorFactory.createSingleFolderDescriptor();
     private static final FileType IMAGE_FILE_TYPE = ImageFileTypeManager.getInstance().getImageFileType();
     public static final FileChooserDescriptor IMAGE_FILE_CHOOSER = new FileChooserDescriptor(true,
-                                                                                             false,
-                                                                                             false,
-                                                                                             false,
-                                                                                             false,
-                                                                                             false) {
+            false,
+            false,
+            false,
+            false,
+            false) {
         public boolean isFileVisible(VirtualFile file, boolean showHiddenFiles) {
             if (file.isDirectory()) {
                 return super.isFileVisible(file, showHiddenFiles);
@@ -49,11 +50,11 @@ public class FileBrowserField extends TextFieldWithBrowseButton {
         }
     };
     public static final FileChooserDescriptor IMAGE_FILES_FOLDER_CHOOSER = new FileChooserDescriptor(true,
-                                                                                                     true,
-                                                                                                     false,
-                                                                                                     false,
-                                                                                                     false,
-                                                                                                     true) {
+            true,
+            false,
+            false,
+            false,
+            true) {
         public boolean isFileVisible(VirtualFile file, boolean showHiddenFiles) {
             if (file.isDirectory()) {
                 return super.isFileVisible(file, showHiddenFiles);
@@ -177,7 +178,7 @@ public class FileBrowserField extends TextFieldWithBrowseButton {
 
     private void getResRootFile(Project project, Module module, ResourcesDialog.ResourceSelectionListener listener) {
         final AndroidFacet currentFacet = AndroidFacetUtils.getCurrentFacet(project, module);
-        final List<VirtualFile> allResourceDirectories = currentFacet.getAllResourceDirectories();
+        final List<VirtualFile> allResourceDirectories = ResourceFolderManager.getInstance(currentFacet).getFolders();
         if (allResourceDirectories.size() == 1) {
             listener.onResourceSelected(allResourceDirectories.get(0));
         } else if (allResourceDirectories.size() > 1) {
