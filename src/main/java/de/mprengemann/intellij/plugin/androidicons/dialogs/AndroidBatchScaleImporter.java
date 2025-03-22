@@ -17,7 +17,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PathMacroManager;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
-import de.mprengemann.intellij.plugin.androidicons.util.FileDrop;
+import com.intellij.openapi.fileChooser.ex.FileDrop;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.progress.ProgressIndicator;
@@ -162,8 +162,8 @@ public class AndroidBatchScaleImporter extends DialogWrapper implements BatchSca
             }
 
             @Override
-            public void dropFiles(final List<VirtualFile> virtualFiles) {
-                fileChooserConsumer.consume(virtualFiles);
+            public void dropFiles(List<? extends VirtualFile> files) {
+                fileChooserConsumer.consume((List<VirtualFile>) files);
             }
         });
     }

@@ -3,6 +3,7 @@ package de.mprengemann.intellij.plugin.androidicons.widgets;
 import com.intellij.openapi.components.PathMacroManager;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
+import com.intellij.openapi.fileChooser.ex.FileDrop;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.project.Project;
@@ -11,7 +12,6 @@ import com.intellij.openapi.ui.TextFieldWithBrowseButton;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.Consumer;
-import de.mprengemann.intellij.plugin.androidicons.util.FileDrop;
 import de.mprengemann.intellij.plugin.androidicons.controllers.settings.ISettingsController;
 import de.mprengemann.intellij.plugin.androidicons.dialogs.ResourcesDialog;
 import de.mprengemann.intellij.plugin.androidicons.util.AndroidFacetUtils;
@@ -141,12 +141,12 @@ public class FileBrowserField extends TextFieldWithBrowseButton {
             }
 
             @Override
-            public void dropFiles(final List<VirtualFile> virtualFiles) {
-                if (virtualFiles == null ||
-                        virtualFiles.isEmpty()) {
+            public void dropFiles(List<? extends VirtualFile> files) {
+                if (files == null ||
+                        files.isEmpty()) {
                     return;
                 }
-                final VirtualFile file = virtualFiles.get(0);
+                final VirtualFile file = files.getFirst();
                 final String filePath = file.getCanonicalPath();
                 settingsController.saveLastImageFolder(filePath);
                 setText(filePath);

@@ -7,7 +7,7 @@ plugins {
 intellij {
     version = '2024.3.5'
     type = 'IC'
-    plugins = ['org.jetbrains.android:243.26053.27', 'java', 'platform-images'] // Specify Android plugin with explicit version
+    plugins = ['org.jetbrains.android:243.25659.59', 'java', 'platform-images'] // Specify Android plugin with explicit version
     updateSinceUntilBuild = false
     downloadSources = !Boolean.valueOf(System.getenv('CI'))
 }
