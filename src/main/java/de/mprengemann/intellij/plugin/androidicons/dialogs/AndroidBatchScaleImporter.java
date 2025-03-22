@@ -210,17 +210,17 @@ public class AndroidBatchScaleImporter extends DialogWrapper implements BatchSca
             exportRoot = AndroidFacetUtils.getResourcesRoot(project, module);
         }
         final IAddItemBatchScaleImporterController addItemController =
-            new AddItemBatchScaleImporterController(defaultsController, exportRoot, realFile);
+                new AddItemBatchScaleImporterController(defaultsController, exportRoot, realFile);
         controller.addImage(addItemController.getSourceResolution(), addItemController.getImageInformation(project));
         addItemController.tearDown();
     }
 
     private void addSingleFile(VirtualFile file) {
         container.getControllerFactory()
-                 .getSettingsController()
-                 .saveLastImageFolder(file.getCanonicalPath());
+                .getSettingsController()
+                .saveLastImageFolder(file.getCanonicalPath());
         AddItemBatchScaleDialog addItemBatchScaleDialog =
-            new AddItemBatchScaleDialog(project, module, controller, file);
+                new AddItemBatchScaleDialog(project, module, controller, file);
         addItemBatchScaleDialog.show();
     }
 
@@ -275,8 +275,8 @@ public class AndroidBatchScaleImporter extends DialogWrapper implements BatchSca
     }
 
     private void initRowSelection() {
-        table.setSelectionBackground(Color.decode("0xFEFBDE"));         // MPArnold 29/1/2020
-        table.setSelectionForeground(Color.decode("0x6F6F6F"));         // MPArnold 29/1/2020
+        table.setSelectionBackground(Color.decode("0xFEFBDE"));
+        table.setSelectionForeground(Color.decode("0x6F6F6F"));
         table.getColumnModel().setColumnSelectionAllowed(false);
         table.getSelectionModel().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -301,7 +301,7 @@ public class AndroidBatchScaleImporter extends DialogWrapper implements BatchSca
             public void componentResized(ComponentEvent componentEvent) {
                 super.componentResized(componentEvent);
                 Dimension tableSize = table.getSize();
-                final int[] columnSizes = new int[]{ 20, 20, 20, 40 };
+                final int[] columnSizes = new int[]{20, 20, 20, 40};
                 for (int i = 0; i < table.getColumnCount(); i++) {
                     TableColumn column = table.getColumnModel().getColumn(i);
                     column.setPreferredWidth((int) (tableSize.width * (columnSizes[i] / 100f)));
@@ -385,8 +385,11 @@ public class AndroidBatchScaleImporter extends DialogWrapper implements BatchSca
         super.doOKAction();
     }
 
-    /** Implements {@link de.mprengemann.intellij.plugin.androidicons.controllers.batchscale.BatchScaleImporterObserver */
-    @Override public void updated() {
+    /**
+     * Implements {@link de.mprengemann.intellij.plugin.androidicons.controllers.batchscale.BatchScaleImporterObserver
+     */
+    @Override
+    public void updated() {
         UIUtil.invokeLaterIfNeeded(new Runnable() {
             @Override
             public void run() {
@@ -397,13 +400,13 @@ public class AndroidBatchScaleImporter extends DialogWrapper implements BatchSca
 
     private void updateTable() {
         if (table == null ||
-            tableModel == null) {
+                tableModel == null) {
             return;
         }
         int selectedRow = table.getSelectedRow();
         tableModel.fireTableDataChanged();
         if (table.getRowCount() > 0) {
-            selectedRow = MathUtils.clamp(selectedRow, 0, table.getRowCount()-1); // MPArnold 31/1/2020
+            selectedRow = MathUtils.clamp(selectedRow, 0, table.getRowCount() - 1);
             table.setRowSelectionInterval(selectedRow, selectedRow);
         } else {
             imageContainer.setDisabledIcon(null);
@@ -412,9 +415,9 @@ public class AndroidBatchScaleImporter extends DialogWrapper implements BatchSca
 
     private static class ImageTableModel extends AbstractTableModel {
         private static final List<String> columnNames = Arrays.asList("Source-File",
-                                                                      "Target-Resolutions",
-                                                                      "Target-Name",
-                                                                      "Target-Root");
+                "Target-Resolutions",
+                "Target-Name",
+                "Target-Root");
         private IBatchScaleImporterController controller;
 
         public ImageTableModel(IBatchScaleImporterController controller) {

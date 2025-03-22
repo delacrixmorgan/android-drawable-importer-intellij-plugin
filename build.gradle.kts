@@ -8,7 +8,6 @@ version = "2025.1"
 
 intellij {
     version.set(libs.versions.intelliJ.version.get())
-    type.set("IC")
     plugins.set(
         listOf(
             "org.jetbrains.android:${libs.versions.android.plugin.get()}",
@@ -39,4 +38,8 @@ dependencies {
     implementation(libs.imgscalr.lib)
     implementation(libs.thumbnailator)
     implementation(libs.gson)
+}
+
+tasks.buildSearchableOptions {
+    enabled = false
 }

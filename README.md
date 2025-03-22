@@ -4,7 +4,7 @@
 - Request for help 🚧
 
 **December 2022 - Skeaner's Fix (Android Studio Dolphin 2021.3.1 Patch 1)**
-- [Release 0.8](https://github.com/Skeaner/android-drawable-importer-intellij-plugin/releases/download/0.8/ADI-hack-0.8.zip
+- [Release 0.8](https://github.com/Skeaner/android-drawable-importer-intellij-plugin/releases/download/0.8/ADI-hack-0.8.zip)
 
 **January 2020 - MPArnold's Fix**
 - Fix AndroidBatchScaleImporter
