@@ -1,0 +1,28 @@
+[versions]
+# https://plugins.jetbrains.com/plugin/22989-android/versions/stable
+intelliJ-version = "2024.3.5"
+android-plugin = "243.25659.59"
+
+# libraries
+commons-io = "2.18.0" # https://mvnrepository.com/artifact/commons-io/commons-io
+commons-math3 = "3.6.1" # https://mvnrepository.com/artifact/org.apache.commons/commons-math3
+commons-lang3 = "3.17.0" # https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+imgscalr-lib = "4.2" # https://mvnrepository.com/artifact/org.imgscalr/imgscalr-lib
+thumbnailator = "0.4.20" # https://mvnrepository.com/artifact/net.coobird/thumbnailator
+gson = "2.12.1" # https://mvnrepository.com/artifact/com.google.code.gson/gson
+
+# plugins
+intelliJ = "1.17.3"
+kotlin = "1.9.25"
+
+[libraries]
+commons-io = { group = "commons-io", name = "commons-io", version.ref = "commons-io" }
+commons-math3 = { group = "org.apache.commons", name = "commons-math3", version.ref = "commons-math3" }
+commons-lang3 = { group = "org.apache.commons", name = "commons-lang3", version.ref = "commons-lang3" }
+imgscalr-lib = { group = "org.imgscalr", name = "imgscalr-lib", version.ref = "imgscalr-lib" }
+thumbnailator = { group = "net.coobird", name = "thumbnailator", version.ref = "thumbnailator" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+
+[plugins]
+intelliJ = { id = "org.jetbrains.intellij", version.ref = "intelliJ" }
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
