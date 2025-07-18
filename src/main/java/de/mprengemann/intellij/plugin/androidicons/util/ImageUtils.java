@@ -19,7 +19,7 @@ import de.mprengemann.intellij.plugin.androidicons.model.Format;
 import de.mprengemann.intellij.plugin.androidicons.model.ImageInformation;
 import net.coobird.thumbnailator.Thumbnails;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.math3.analysis.interpolation.SplineInterpolator;
 import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
 import org.imgscalr.Scalr;

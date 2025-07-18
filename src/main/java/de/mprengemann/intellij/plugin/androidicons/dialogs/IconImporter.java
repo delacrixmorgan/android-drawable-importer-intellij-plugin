@@ -41,7 +41,7 @@ import de.mprengemann.intellij.plugin.androidicons.util.ImageUtils;
 import de.mprengemann.intellij.plugin.androidicons.widgets.ExportNameField;
 import de.mprengemann.intellij.plugin.androidicons.widgets.FileBrowserField;
 import de.mprengemann.intellij.plugin.androidicons.widgets.ResolutionButtonModel;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
