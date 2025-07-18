@@ -1,7 +1,7 @@
 [versions]
 # https://plugins.jetbrains.com/plugin/22989-android/versions/stable
-intelliJ-version = "IC-2024.3.5" # Ultimate Edition (IU), Community Edition (IC)
-android-plugin = "243.25659.59"
+intelliJ-version = "IC-2024.3.6" # Ultimate Edition (IU), Community Edition (IC)
+android-plugin = "243.26574.91"
 
 #intelliJ-version = "2025.1"
 #android-plugin = "251.23774.109"
